@@ -15,6 +15,14 @@ if [[ -z "$PORT" ]]; then
     exit 3
 fi
 
+if [[ -z "$DELAY" ]]; then
+    echo "DELAY: no delay specified"
+
+else
+    echo "DELAY: Applying $DELAY"
+    tc qdisc add dev eth0 root netem delay $DELAY
+fi
+
 CMD="socat TCP-LISTEN:$LISTEN,fork,reuseaddr TCP:$HOST:$PORT"
 
 echo "Executing: $CMD"
