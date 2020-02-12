@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 if [[ -z "$LISTEN" ]]; then
     echo "Error: please provide a listen port (LISTEN)"
     exit 1
